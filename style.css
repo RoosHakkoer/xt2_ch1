@@ -10,11 +10,15 @@ header{
 h1{
   font-size: 40px;
   text-align: center;
-  padding-top:  0.3em;
+  padding:  0.3em 0em;
 }
 h2{
   color: white;
   padding-top: 1em;
+/*  text-align: center;*/
+}
+p{
+  color: white;
   text-align: center;
 }
 
@@ -22,7 +26,14 @@ h2{
   background-color: white;
   padding: 4.4em 7.5em;
 }
+#fuelchart{
+  background-color: white;
 
+}
+#food{
+  background-color: white;
+
+}
 .container{
 width: 100%;
 display: flex;
@@ -32,11 +43,18 @@ flex-flow: row wrap;
 
 /* media queries*/
 @media all and (min-width:540px) {
-
+  .container{
+    justify-content: space-around;
+  }
 }
 @media all and (min-width:768px) {
-
+  .container{
+    flex-flow: row-reverse wrap;
+  }
 }
 @media all and (min-width:1024px) {
-
+  .container{
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
 }
