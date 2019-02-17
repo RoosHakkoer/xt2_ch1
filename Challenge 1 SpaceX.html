@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <link rel="stylesheet" href="Challenge1.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load("current", {packages:["corechart"]});
+          google.charts.load('current', {'packages':['gauge']});
+          google.charts.setOnLoadCallback(drawFuelChart);
+          google.charts.setOnLoadCallback(drawSpeedChart);
+          google.charts.setOnLoadCallback(drawFoodChart);
+
+          function drawFuelChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Fuel', 'in percent'],
+              ['Full',     98],
+              ['Empty',      2]
+            ]);
+
+            var options = {
+              title: 'fuel in percent',
+              pieHole: 0.6,
+              colors:['#005288', '#a7a9ac'],
+              width: 400,
+              height: 300
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('fuelchart'));
+            chart.draw(data, options);
+          }
+
+          function drawSpeedChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Label', 'Value'],
+              ['Speed in Km/s', 20]
+            ]);
+
+            var options = {
+              title:'SPEED',
+              width: 400, height: 160,
+
+              minorTicks: 5
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById('gauge'));
+            chart.draw(data, options);
+          }
+
+          function drawFoodChart() {
+            var data = google.visualization.arrayToDataTable([
+              ["Label", "FoodWater", { role: "style" } ],
+              ["Food", 90, "#b87333"],
+              ["Water", 80, "lightblue"],
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+            var options = {
+              title: "Supplies in percent",
+              width: 400,
+              height: 300,
+              bar: {groupWidth: "50%"},
+              legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("food"));
+            chart.draw(view, options);
+          }
+        </script>
+  </head>
+  <body>
+    <header>
+      <h1>SpaceX</h1>
+    </header>
+    <main class="container">
+      <div class="item one">
+        <h2>speed</h2>
+        <article id="gauge"></article>
+      </div>
+      <div class="item two" >
+        <h2>fuel</h2>
+        <article id="fuelchart"></article>
+      </div>
+      <div class="item three">
+        <h2>food supplies</h2>
+        <article id="food"></article>
+      </div>
+    </main>
+    <footer>
+      <p>Roos Hakkoer 16082788</p>
+
+    </footer>
+  </body>
+</html>
